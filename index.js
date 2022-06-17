@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 
 // CREATE connection from mongos db/////////////////////////
 require('dotenv').config();
-const mongoString = `mongodb+srv://maulearning:maulearning@cluster0.jlp8v.mongodb.net/?retryWrites=true&w=majority`
+const mongoString = "mongodb+srv://maulearning:maulearning@cluster0.jlp8v.mongodb.net/?retryWrites=true&w=majority";
 //  throw error or success on the connections ////////////
 mongoose.connect(mongoString);
 const database = mongoose.connection
