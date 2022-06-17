@@ -1,6 +1,8 @@
 //// installation of express here 
 const express = require('express')
 const mongoose= require('mongoose')
+const bodyParser = require('body-parser')
+const morgan = require('morgan')
 // importation of routerrs from the router folder here//
 const routes = require('./routes/route')
 const booksR = require('./routes/book.route')
@@ -22,6 +24,8 @@ const app= express()
 app.use(express.json());
 //  create a public folder for static file/////////////
 app.use('/uploads', express.static('uploads'))
+app.use(morgan('dev'))
+app.use(bodyParser.json());
 
 // CREATE connection from mongos db/////////////////////////
 require('dotenv').config();
@@ -46,6 +50,7 @@ app.use('/api/v1', paper.single('paperfile'), paparR)
 app.use('/api/v1', thesis.single('thesisFile'), theses)
 ///////////////////////////////////////////////////////////////
 
-app.listen(3000, () => {
-    console.log(`Server Started at ${3000}`)
+const port = process.env.PORT || 8000
+app.listen(port, () => {
+    console.log(`Server Started at ${8000}`)
 })
